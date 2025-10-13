@@ -1,6 +1,6 @@
 # Nginx WAF Desktop Client
 
-A desktop application for managing Nginx Web Application Firewall (WAF) configurations. Built with Tauri (Rust backend) and React (frontend), providing a user-friendly interface for monitoring, configuring, and maintaining WAF settings.
+A desktop application for managing Nginx Web Application Firewall (WAF) configurations, providing a user-friendly interface for monitoring, configuring, and maintaining WAF settings. [HomePage Product](https://github.com/TinyActive/nginx-love/)
 
 ## Features
 
