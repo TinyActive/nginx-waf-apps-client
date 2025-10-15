@@ -26,6 +26,7 @@ import { Route as AuthBackupRouteImport } from './routes/_auth/backup'
 import { Route as AuthAlertsRouteImport } from './routes/_auth/alerts'
 import { Route as AuthAclRouteImport } from './routes/_auth/acl'
 import { Route as AuthAccountRouteImport } from './routes/_auth/account'
+import { Route as AuthAccessListsRouteImport } from './routes/_auth/access-lists'
 
 const LoginRoute = LoginRouteImport.update({
   id: '/login',
@@ -111,10 +112,16 @@ const AuthAccountRoute = AuthAccountRouteImport.update({
   path: '/account',
   getParentRoute: () => AuthRoute,
 } as any)
+const AuthAccessListsRoute = AuthAccessListsRouteImport.update({
+  id: '/access-lists',
+  path: '/access-lists',
+  getParentRoute: () => AuthRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/$catchall': typeof CatchallRoute
   '/login': typeof LoginRoute
+  '/access-lists': typeof AuthAccessListsRoute
   '/account': typeof AuthAccountRoute
   '/acl': typeof AuthAclRoute
   '/alerts': typeof AuthAlertsRoute
@@ -133,6 +140,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/$catchall': typeof CatchallRoute
   '/login': typeof LoginRoute
+  '/access-lists': typeof AuthAccessListsRoute
   '/account': typeof AuthAccountRoute
   '/acl': typeof AuthAclRoute
   '/alerts': typeof AuthAlertsRoute
@@ -153,6 +161,7 @@ export interface FileRoutesById {
   '/$catchall': typeof CatchallRoute
   '/_auth': typeof AuthRouteWithChildren
   '/login': typeof LoginRoute
+  '/_auth/access-lists': typeof AuthAccessListsRoute
   '/_auth/account': typeof AuthAccountRoute
   '/_auth/acl': typeof AuthAclRoute
   '/_auth/alerts': typeof AuthAlertsRoute
@@ -173,6 +182,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/$catchall'
     | '/login'
+    | '/access-lists'
     | '/account'
     | '/acl'
     | '/alerts'
@@ -191,6 +201,7 @@ export interface FileRouteTypes {
   to:
     | '/$catchall'
     | '/login'
+    | '/access-lists'
     | '/account'
     | '/acl'
     | '/alerts'
@@ -210,6 +221,7 @@ export interface FileRouteTypes {
     | '/$catchall'
     | '/_auth'
     | '/login'
+    | '/_auth/access-lists'
     | '/_auth/account'
     | '/_auth/acl'
     | '/_auth/alerts'
@@ -353,10 +365,18 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthAccountRouteImport
       parentRoute: typeof AuthRoute
     }
+    '/_auth/access-lists': {
+      id: '/_auth/access-lists'
+      path: '/access-lists'
+      fullPath: '/access-lists'
+      preLoaderRoute: typeof AuthAccessListsRouteImport
+      parentRoute: typeof AuthRoute
+    }
   }
 }
 
 interface AuthRouteChildren {
+  AuthAccessListsRoute: typeof AuthAccessListsRoute
   AuthAccountRoute: typeof AuthAccountRoute
   AuthAclRoute: typeof AuthAclRoute
   AuthAlertsRoute: typeof AuthAlertsRoute
@@ -374,6 +394,7 @@ interface AuthRouteChildren {
 }
 
 const AuthRouteChildren: AuthRouteChildren = {
+  AuthAccessListsRoute: AuthAccessListsRoute,
   AuthAccountRoute: AuthAccountRoute,
   AuthAclRoute: AuthAclRoute,
   AuthAlertsRoute: AuthAlertsRoute,

@@ -35,6 +35,7 @@ import {
   SidebarHeader,
   useSidebar
 } from '@/components/ui/sidebar';
+import { Button } from '@/components/ui/button';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -65,6 +66,7 @@ const menuGroups = [
     items: [
       { key: 'modsecurity', icon: Shield, path: '/modsecurity' },
       { key: 'acl', icon: UserCog, path: '/acl' },
+      { key: 'access-lists', icon: Lock, path: '/access-lists' },
     ]
   },
   {
@@ -109,7 +111,7 @@ export function AppSidebar() {
       <SidebarHeader>
         <SidebarGroup>
           <SidebarGroupLabel className="text-primary font-bold text-lg">
-            {!isCollapsed && 'Nginx WAF'}
+            {!isCollapsed && 'Nginx Admin'}
           </SidebarGroupLabel>
         </SidebarGroup>
       </SidebarHeader>

@@ -209,7 +209,7 @@ export function DomainDialog({ open, onOpenChange, domain, onSave }: DomainDialo
 
   const updateUpstream = (index: number, field: keyof UpstreamFormData, value: any) => {
     const newUpstreams = [...upstreams];
-    newUpstreams[index] = { ...newUpstreams[index], [field]: value as any };
+    newUpstreams[index] = { ...newUpstreams[index], [field]: value };
     setUpstreams(newUpstreams);
   };
 
