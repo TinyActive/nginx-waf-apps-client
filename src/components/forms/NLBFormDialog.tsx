@@ -1,7 +1,7 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useForm, useFieldArray, Controller } from 'react-hook-form';
 import { useCreateNLB, useUpdateNLB } from '@/queries/nlb.query-options';
-import { NetworkLoadBalancer, CreateNLBInput } from '@/types';
+import { NetworkLoadBalancer, CreateNLBInput, NLBUpstream } from '@/types';
 import {
   Dialog,
   DialogContent,

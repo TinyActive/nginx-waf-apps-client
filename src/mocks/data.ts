@@ -9,8 +9,8 @@ export const mockDomains: Domain[] = [
     sslExpiry: '2025-12-31',
     modsecEnabled: true,
     upstreams: [
-      { id: 'u1', host: '10.0.1.10', port: 8080, protocol: 'http', sslVerify: false, weight: 1, maxFails: 3, failTimeout: 30, status: 'up' },
-      { id: 'u2', host: '10.0.1.11', port: 8080, protocol: 'http', sslVerify: false, weight: 1, maxFails: 3, failTimeout: 30, status: 'up' }
+      { id: 'u1', host: '10.0.1.10', port: 8080, weight: 1, maxFails: 3, failTimeout: 30, status: 'up' },
+      { id: 'u2', host: '10.0.1.11', port: 8080, weight: 1, maxFails: 3, failTimeout: 30, status: 'up' }
     ],
     loadBalancer: {
       algorithm: 'least_conn',
@@ -27,8 +27,8 @@ export const mockDomains: Domain[] = [
     sslExpiry: '2025-11-15',
     modsecEnabled: true,
     upstreams: [
-      { id: 'u3', host: '10.0.2.10', port: 3000, protocol: 'http', sslVerify: false, weight: 2, maxFails: 2, failTimeout: 20, status: 'up' },
-      { id: 'u4', host: '10.0.2.11', port: 3000, protocol: 'http', sslVerify: false, weight: 1, maxFails: 2, failTimeout: 20, status: 'down' }
+      { id: 'u3', host: '10.0.2.10', port: 3000, weight: 2, maxFails: 2, failTimeout: 20, status: 'up' },
+      { id: 'u4', host: '10.0.2.11', port: 3000, weight: 1, maxFails: 2, failTimeout: 20, status: 'down' }
     ],
     loadBalancer: {
       algorithm: 'round_robin',
@@ -44,7 +44,7 @@ export const mockDomains: Domain[] = [
     sslEnabled: false,
     modsecEnabled: false,
     upstreams: [
-      { id: 'u5', host: '10.0.3.10', port: 80, protocol: 'http', sslVerify: false, weight: 1, maxFails: 5, failTimeout: 60, status: 'up' }
+      { id: 'u5', host: '10.0.3.10', port: 80, weight: 1, maxFails: 5, failTimeout: 60, status: 'up' }
     ],
     loadBalancer: {
       algorithm: 'ip_hash',
@@ -61,7 +61,7 @@ export const mockDomains: Domain[] = [
     sslExpiry: '2025-04-30',
     modsecEnabled: true,
     upstreams: [
-      { id: 'u6', host: '10.0.4.10', port: 8000, protocol: 'http', sslVerify: false, weight: 1, maxFails: 3, failTimeout: 30, status: 'down' }
+      { id: 'u6', host: '10.0.4.10', port: 8000, weight: 1, maxFails: 3, failTimeout: 30, status: 'down' }
     ],
     loadBalancer: {
       algorithm: 'least_conn',
@@ -88,7 +88,7 @@ export const mockModSecRules: ModSecurityRule[] = [
 export const mockSSLCerts: SSLCertificate[] = [
   {
     id: 'c1',
-    domainId: 'api.example.com',
+    domain: 'api.example.com',
     commonName: 'api.example.com',
     sans: ['api.example.com', 'www.api.example.com'],
     issuer: "Let's Encrypt",
@@ -99,7 +99,7 @@ export const mockSSLCerts: SSLCertificate[] = [
   },
   {
     id: 'c2',
-    domainId: 'app.production.com',
+    domain: 'app.production.com',
     commonName: 'app.production.com',
     sans: ['app.production.com'],
     issuer: 'DigiCert',
@@ -110,7 +110,7 @@ export const mockSSLCerts: SSLCertificate[] = [
   },
   {
     id: 'c3',
-    domainId: 'cdn.assets.com',
+    domain: 'cdn.assets.com',
     commonName: 'cdn.assets.com',
     sans: ['cdn.assets.com', '*.cdn.assets.com'],
     issuer: "Let's Encrypt",
@@ -560,3 +560,5 @@ export const mockActivityLogs: ActivityLog[] = [
     success: true
   }
 ];
+
+

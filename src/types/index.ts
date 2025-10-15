@@ -10,8 +10,23 @@ export interface Domain {
   sslCertificate?: SSLCertificate | null;
   createdAt: string;
   lastModified: string;
+  // Real IP configuration
   realIpEnabled?: boolean;
   realIpCloudflare?: boolean;
+  realIpCustomCidrs?: string[];
+  // Advanced configuration
+  hstsEnabled?: boolean;
+  http2Enabled?: boolean;
+  grpcEnabled?: boolean;
+  customLocations?: CustomLocation[];
+}
+
+export interface CustomLocation {
+  path: string;
+  useUpstream?: boolean; // Toggle: use upstream backend or custom config
+  upstreamType: 'proxy_pass' | 'grpc_pass' | 'grpcs_pass';
+  upstreams: Upstream[];
+  config?: string; // Custom nginx directives
 }
 
 export interface Upstream {
