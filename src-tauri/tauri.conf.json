@@ -1,7 +1,7 @@
 {
   "$schema": "https://schema.tauri.app/config/2",
   "productName": "Nginx WAF",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "identifier": "com.tinyactive.nginx-waf",
   "build": {
     "beforeDevCommand": "npm run dev",

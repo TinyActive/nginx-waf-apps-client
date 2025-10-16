@@ -27,7 +27,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
-import { DomainDialog } from '@/components/domains/DomainDialog';
+import { DomainDialogV2 } from '@/components/domains/DomainDialogV2';
 import { InstallationProgressDialog } from '@/components/installation/InstallationProgressDialog';
 import { toast } from 'sonner';
 import {
@@ -580,7 +580,7 @@ export default function Domains() {
           </div>
         </div>
 
-        <DomainDialog
+        <DomainDialogV2
           open={dialogOpen}
           onOpenChange={(open) => {
             setDialogOpen(open);

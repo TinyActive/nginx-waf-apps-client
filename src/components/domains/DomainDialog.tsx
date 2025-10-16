@@ -41,7 +41,7 @@ interface DomainDialogProps {
 }
 
 export function DomainDialog({ open, onOpenChange, domain, onSave }: DomainDialogProps) {
-  const { t } = useTranslation();
+  // const { t } = useTranslation();
   const [formData, setFormData] = useState({
     name: '',
     status: 'active' as 'active' | 'inactive' | 'error',
@@ -190,7 +190,7 @@ export function DomainDialog({ open, onOpenChange, domain, onSave }: DomainDialo
       {
         host: '',
         port: 80,
-        protocol: 'http',
+        protocol: 'http' as 'http' | 'https',
         sslVerify: true,
         weight: 1,
         maxFails: 3,
@@ -209,7 +209,7 @@ export function DomainDialog({ open, onOpenChange, domain, onSave }: DomainDialo
 
   const updateUpstream = (index: number, field: keyof UpstreamFormData, value: any) => {
     const newUpstreams = [...upstreams];
-    newUpstreams[index] = { ...newUpstreams[index], [field]: value as any };
+    newUpstreams[index] = { ...newUpstreams[index], [field]: value };
     setUpstreams(newUpstreams);
   };
 
