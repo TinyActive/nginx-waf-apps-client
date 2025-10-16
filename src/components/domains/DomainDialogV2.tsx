@@ -44,6 +44,7 @@ interface UpstreamFormData {
 
 interface CustomLocationFormData {
   path: string;
+  useUpstream?: boolean;
   upstreamType: 'proxy_pass' | 'grpc_pass' | 'grpcs_pass';
   upstreams: UpstreamFormData[];
   config?: string;
