@@ -41,7 +41,7 @@ interface DomainDialogProps {
 }
 
 export function DomainDialog({ open, onOpenChange, domain, onSave }: DomainDialogProps) {
-  const { t } = useTranslation();
+  // const { t } = useTranslation();
   const [formData, setFormData] = useState({
     name: '',
     status: 'active' as 'active' | 'inactive' | 'error',
@@ -190,7 +190,7 @@ export function DomainDialog({ open, onOpenChange, domain, onSave }: DomainDialo
       {
         host: '',
         port: 80,
-        protocol: 'http',
+        protocol: 'http' as 'http' | 'https',
         sslVerify: true,
         weight: 1,
         maxFails: 3,
