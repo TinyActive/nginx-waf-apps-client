@@ -127,7 +127,7 @@ jobs:
         with:
           path: ./artifacts
 
-      - name: Create Draft Release
+      - name: Create Draft Release 0.1.1
         uses: softprops/action-gh-release@v1
         with:
           tag_name: 0.1.1
