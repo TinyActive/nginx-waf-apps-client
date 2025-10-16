@@ -130,8 +130,8 @@ jobs:
       - name: Create Draft Release
         uses: softprops/action-gh-release@v1
         with:
-          tag_name: v0.1.0
-          name: Release v0.1.0
+          tag_name: 0.1.1
+          name: Release 0.1.1
           body: |
             Automated release for Nginx WAF Desktop Client v0.1.0.
 
