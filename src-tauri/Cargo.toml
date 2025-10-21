@@ -1,9 +1,9 @@
 [package]
 name = "Nginx_WAF"
-version = "0.1.0"
+version = "0.1.2"
 description = "Nginx WAF - Advanced Nginx Management Platform"
 authors = ["TinyActive"]
-edition = "2024"
+edition = "2025"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
