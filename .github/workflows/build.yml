@@ -127,13 +127,13 @@ jobs:
         with:
           path: ./artifacts
 
-      - name: Create Draft Release 0.1.3
+      - name: Create Draft Release 0.1.3.1
         uses: softprops/action-gh-release@v1
         with:
-          tag_name: 0.1.3
-          name: Release 0.1.3
+          tag_name: 0.1.3.1
+          name: Release 0.1.3.1
           body: |
-            Automated release for Nginx WAF Desktop Client v0.1.3.
+            Automated release for Nginx WAF Desktop Client v0.1.3.1.
 
             ## Changes
             - Cross-platform builds for Linux x86_64, Windows x86_64, Mac Intel, Mac ARM.
