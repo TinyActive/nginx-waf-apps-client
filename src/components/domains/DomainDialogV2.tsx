@@ -44,7 +44,6 @@ interface UpstreamFormData {
 
 interface CustomLocationFormData {
   path: string;
-  useUpstream?: boolean;
   upstreamType: 'proxy_pass' | 'grpc_pass' | 'grpcs_pass';
   upstreams: UpstreamFormData[];
   config?: string;
@@ -223,7 +222,7 @@ export function DomainDialogV2({ open, onOpenChange, domain, onSave }: DomainDia
     };
 
     onSave(domainData);
-    onOpenChange(false);
+    // Do not close dialog here - let parent component handle it after successful save
   };
 
   return (
