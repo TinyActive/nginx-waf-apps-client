@@ -48,7 +48,7 @@ export function LogDetailsDialog({ log, open, onOpenChange }: LogDetailsDialogPr
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="max-w-4xl max-h-[90vh]">
+      <DialogContent className="!max-w-7xl max-h-[90vh] w-[95vw]">
         <DialogHeader>
           <DialogTitle className="flex items-center gap-2">
             Log Details
@@ -65,7 +65,7 @@ export function LogDetailsDialog({ log, open, onOpenChange }: LogDetailsDialogPr
             {/* Basic Information */}
             <div>
               <h3 className="text-sm font-semibold mb-2">Basic Information</h3>
-              <div className="grid grid-cols-2 gap-2 text-sm">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 text-sm">
                 <div>
                   <span className="font-medium">Source:</span> {log.source}
                 </div>
@@ -93,7 +93,7 @@ export function LogDetailsDialog({ log, open, onOpenChange }: LogDetailsDialogPr
             {(log.method || log.path || log.uri || log.statusCode) && (
               <div>
                 <h3 className="text-sm font-semibold mb-2">Request Information</h3>
-                <div className="grid grid-cols-2 gap-2 text-sm">
+                <div className="space-y-3 text-sm">
                   {log.method && (
                     <div>
                       <span className="font-medium">Method:</span>{" "}
@@ -101,43 +101,49 @@ export function LogDetailsDialog({ log, open, onOpenChange }: LogDetailsDialogPr
                     </div>
                   )}
                   {log.path && (
-                    <div>
-                      <span className="font-medium">Path:</span>{" "}
-                      <code className="text-xs bg-muted px-1 py-0.5 rounded">
-                        {log.path}
-                      </code>
+                    <div className="flex flex-col gap-1">
+                      <span className="font-medium">Path:</span>
+                      <div className="bg-muted px-3 py-2 rounded">
+                        <code className="text-xs font-mono whitespace-pre-wrap break-all">
+                          {log.path}
+                        </code>
+                      </div>
                     </div>
                   )}
                   {log.uri && (
-                    <div className="col-span-2">
-                      <span className="font-medium">URI:</span>{" "}
-                      <code className="text-xs bg-muted px-1 py-0.5 rounded">
-                        {log.uri}
-                      </code>
+                    <div className="flex flex-col gap-1">
+                      <span className="font-medium">URI:</span>
+                      <div className="bg-muted px-3 py-2 rounded">
+                        <code className="text-xs font-mono whitespace-pre-wrap break-all">
+                          {log.uri}
+                        </code>
+                      </div>
                     </div>
                   )}
-                  {log.statusCode && (
-                    <div>
-                      <span className="font-medium">Status Code:</span>{" "}
-                      <Badge
-                        variant={
-                          log.statusCode >= 500
-                            ? "destructive"
-                            : log.statusCode >= 400
-                            ? "outline"
-                            : "default"
-                        }
-                      >
-                        {log.statusCode}
-                      </Badge>
-                    </div>
-                  )}
-                  {log.responseTime && (
-                    <div>
-                      <span className="font-medium">Response Time:</span>{" "}
-                      {log.responseTime}ms
-                    </div>
-                  )}
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                    {log.statusCode && (
+                      <div>
+                        <span className="font-medium">Status Code:</span>{" "}
+                        <Badge
+                          variant={
+                            log.statusCode >= 500
+                              ? "destructive"
+                              : log.statusCode >= 400
+                              ? "outline"
+                              : "default"
+                          }
+                        >
+                          {log.statusCode}
+                        </Badge>
+                      </div>
+                    )}
+                    {log.responseTime && (
+                      <div>
+                        <span className="font-medium">Response Time:</span>{" "}
+                        {log.responseTime}ms
+                      </div>
+                    )}
+                  </div>
                 </div>
               </div>
             )}
@@ -186,11 +192,13 @@ export function LogDetailsDialog({ log, open, onOpenChange }: LogDetailsDialogPr
                     </div>
                   )}
                   {log.file && (
-                    <div className="flex items-start gap-2">
-                      <span className="font-medium min-w-[100px]">Rule File:</span>
-                      <code className="text-xs bg-muted px-2 py-1 rounded flex-1 break-all">
-                        {log.file}
-                      </code>
+                    <div className="flex flex-col gap-1">
+                      <span className="font-medium">Rule File:</span>
+                      <div className="bg-muted px-3 py-2 rounded">
+                        <code className="text-xs font-mono whitespace-pre-wrap break-all">
+                          {log.file}
+                        </code>
+                      </div>
                     </div>
                   )}
                   {log.line && (
@@ -208,11 +216,13 @@ export function LogDetailsDialog({ log, open, onOpenChange }: LogDetailsDialogPr
                     </div>
                   )}
                   {log.data && (
-                    <div className="flex items-start gap-2">
-                      <span className="font-medium min-w-[100px]">Data:</span>
-                      <code className="text-xs bg-muted px-2 py-1 rounded flex-1 break-all">
-                        {log.data}
-                      </code>
+                    <div className="flex flex-col gap-1">
+                      <span className="font-medium">Data:</span>
+                      <div className="bg-muted px-3 py-2 rounded overflow-x-auto max-h-[200px] overflow-y-auto">
+                        <code className="text-xs font-mono whitespace-pre-wrap break-words">
+                          {log.data}
+                        </code>
+                      </div>
                     </div>
                   )}
                 </div>
@@ -223,7 +233,7 @@ export function LogDetailsDialog({ log, open, onOpenChange }: LogDetailsDialogPr
             <div>
               <h3 className="text-sm font-semibold mb-2">Message</h3>
               <div className="bg-muted p-3 rounded-md">
-                <p className="text-sm font-medium mb-2">{log.message}</p>
+                <p className="text-sm font-medium whitespace-pre-wrap break-all">{log.message}</p>
               </div>
             </div>
 
@@ -231,8 +241,8 @@ export function LogDetailsDialog({ log, open, onOpenChange }: LogDetailsDialogPr
             {log.fullMessage && (
               <div>
                 <h3 className="text-sm font-semibold mb-2">Complete Log Entry</h3>
-                <div className="bg-muted p-3 rounded-md">
-                  <pre className="text-xs whitespace-pre-wrap break-words font-mono">
+                <div className="bg-muted p-3 rounded-md max-h-[300px] overflow-y-auto">
+                  <pre className="text-xs whitespace-pre-wrap break-all font-mono">
                     {log.fullMessage}
                   </pre>
                 </div>
